@@ -16,8 +16,7 @@ Route::get('test', function () {
 
 
 
-Route::get('login', [AuthController::class, 'create'])
-    ->name('login');
+Route::post('login', [AuthController::class, 'login']);
 
 Route::resource('users', UserController::class);
 Route::resource('flights', FlightController::class);
