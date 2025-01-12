@@ -10,9 +10,9 @@ class UserController extends Controller
 {
     //Afficher tous les utilisateurs
     public function index(){
-        $users = User::paginate(10);
+        $users = User::get();
         return $users;
-    } 
+    }
 
     //Enregistrer un utilisateur
     public function store(Request $request){
@@ -38,7 +38,7 @@ public function show($id){
     $usertype = $user->usertype;
     return $user;}
 
- 
+
 //Mettre à jour un utilisateur
 public function update(Request $request, $id){
     $user = User::find($id);
@@ -47,7 +47,18 @@ public function update(Request $request, $id){
         'email'=> 'required|email|unique:users,email',
         'userType' => 'required|in:admin,user',
     ]);
-    $newUser = $user->update($request->only('name','email','usertype')) ;  
+    $newUser = $user->update($request->only('name','email','usertype')) ;
+    return $newUser ;
+}
+
+
+//Mettre à jour le role  utilisateur
+public function updateRole(Request $request, $id){
+    $user = User::find($id);
+    $request->validate([
+        'usertype' => 'required|in:admin,user',
+    ]);
+    $newUser = $user->update($request->only('usertype')) ;
     return $newUser ;
 }
 public function destroy($id){

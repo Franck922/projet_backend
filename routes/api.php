@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\FlightController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\ReservationController;
@@ -22,3 +23,8 @@ Route::resource('users', UserController::class);
 Route::resource('flights', FlightController::class);
 Route::resource('payments', PaymentController::class);
 Route::resource('reservations', ReservationController::class);
+
+
+
+Route::patch( '/users/update-role/{id}', [UserController::class, 'updateRole']);
+Route::get( '/dashboard-stats', [DashboardController::class, 'getStats']);
