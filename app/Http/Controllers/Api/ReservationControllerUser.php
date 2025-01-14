@@ -1,4 +1,4 @@
-<?php
+<!--  
 
 namespace App\Http\Controllers\Api;
 
@@ -49,4 +49,4 @@ class ReservationControllerUser extends Controller
 
         return $reservations;
     }
-}
+} -->

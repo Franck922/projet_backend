@@ -17,14 +17,15 @@ Route::get('test', function () {
 
 
 
-Route::post( 'login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login']);
 
 Route::resource('users', UserController::class);
 Route::resource('flights', FlightController::class);
 Route::resource('payments', PaymentController::class);
 Route::resource('reservations', ReservationController::class);
 
+Route::get('/reservations-user/{userId}', [ReservationController::class, 'indexUser']);
 
 
-Route::patch( '/users/update-role/{id}', [UserController::class, 'updateRole']);
-Route::get( '/dashboard-stats', [DashboardController::class, 'getStats']);
+Route::patch('/users/update-role/{id}', [UserController::class, 'updateRole']);
+Route::get('/dashboard-stats', [DashboardController::class, 'getStats']);
